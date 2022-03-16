@@ -1,0 +1,133 @@
+<section class="vh-100" style="background-color: #e6e4e4;">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+
+    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css"> -->
+    <!------ Include the above in your HEAD tag ---------->
+
+    <!-- <div class="jumbotron jumbotron-sm">
+      <div class="container">
+          <div class="row">
+              <div class="col-sm-12 col-lg-12">
+                  <h1 class="h1">
+                      Contact us <small>Feel free to contact us</small></h1>
+              </div>
+          </div>
+      </div>
+  </div> -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+<nav class="navbar navbar-expand-xl navbar-dark bg-dark">
+    <a class="navbar-brand"><i class="fa fa-ambulance"></i><b>Medicare</b></a>
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- Collection of nav links, forms, and other content for toggling -->
+    <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
+        <div class="navbar-nav">
+            <a href="home" class="nav-item nav-link"><i class="fa fa-home"></i><span>Home</span></a>
+            <a href="about" class="nav-item nav-link"><i class="fa fa-users"></i><span>About us</span></a>
+            <a href="contact" class="nav-item nav-link"><i class="fa fa-envelope"></i><span>Contact us</span></a>
+        </div>
+        <!-- <div class="search-container">
+            <form action="#">
+              <input type="text" placeholder="Search.." name="search">
+              <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+          </div> -->
+        <div class="navbar-nav ml-auto">
+            <a href="login" class="nav-item nav-link"><i class="fa fa-sign-in"></i><span>Login</span></a>
+            <a href="reg" class="nav-item nav-link"><i class="fa fa-user-plus"></i><span>Sign Up</span></a>
+        </div>
+    </div>
+</nav>
+    <br>
+    <h2 class="h3 block-title text-center">Contact Us<br></h2>
+    <br>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="well well-sm">
+                    <form [formGroup]="contactForm">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="name">
+                                        Name</label>
+                                    <input formControlName="name" type="text" class="form-control" id="name"
+                                        placeholder="Enter name">
+                                    <span class="text-danger"
+                                        *ngIf="contactForm.controls['name'].dirty && contactForm.hasError('required','name')">*Name
+                                        is required</span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">
+                                        Email Address</label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><span
+                                                class="glyphicon glyphicon-envelope"></span>
+                                        </span>
+                                        <input formControlName="email" type="email" class="form-control" id="email"
+                                            placeholder="Enter email" required="required" />
+                                    </div>
+                                    <span class="text-danger"
+                                        *ngIf="contactForm.controls['email'].dirty && contactForm.hasError('required','email')">*email
+                                        is required</span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="subject">
+                                        Subject</label>
+                                    <select id="subject" name="subject" class="form-control" required="required">
+                                        <option value="na" selected="">Choose One:</option>
+                                        <option value="service">General Customer Service</option>
+                                        <option value="suggestions">Suggestions</option>
+                                        <option value="product">Product Support</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="name">
+                                        Message</label>
+                                    <textarea name="message" id="message" class="form-control" rows="9" cols="25"
+                                        required="required" formControlName="message" placeholder="Message"></textarea>
+                                    <span class="text-danger"
+                                        *ngIf="contactForm.controls['message'].dirty && contactForm.hasError('required','message')">*Message
+                                        is required</span>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <button (click)="ngOnSubmit()" [disabled]="!contactForm.valid" type="submit"
+                                    class="btn button pull-right" id="btnContactUs">
+                                    Send Message</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <form>
+                    <legend><span class="glyphicon glyphicon-globe"></span>Our office</legend>
+                    <address>
+                        <strong>Medicare, Inc.</strong><br>
+                        San Francisco, CA<br>
+                        Phone:
+                        (123) 456-7890
+                    </address>
+                    <address>
+                        <strong>Mail Id</strong><br>
+                        <p><a href="mailto:admin@gmail.com">admin@gmail.com</a></p>
+                    </address>
+                </form>
+            </div>
+        </div>
+    </div>

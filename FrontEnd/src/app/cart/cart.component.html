@@ -1,0 +1,106 @@
+<div>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <nav class="navbar navbar-expand-xl navbar-dark bg-dark">
+    <a class="navbar-brand"><i class="fa fa-ambulance"></i><b>Medicare</b></a>
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
+      <div class="navbar-nav">
+        <!-- <a href="createpro" class="nav-item nav-link"><i class="fa fa-plus"></i><span>Add Product</span></a>
+          <a href="prolist" class="nav-item nav-link"><i class="fa fa-eye"></i><span>View Product</span></a> -->
+      </div>
+      <div class="navbar-nav ml-auto">
+        <a (click)="logout()" class="nav-item nav-link"><i class="fa fa-sign-out"></i><span>Logout</span></a>
+      </div>
+    </div>
+  </nav>
+</div>
+<br>
+<h1 class="text-center"> Cart </h1>
+<br>
+<h2 class="fw-bold text-center">10% Discount on Payment!!</h2>
+<br>
+<div class="container">
+  <div class="col-md-15">
+    <table class="table table-striped text-center table-bordered border-secondary">
+      <thead>
+        <tr>
+          <th> PID </th>
+          <th> Product Name </th>
+          <th> Product Type </th>
+          <th> Price </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of items">
+          <td> {{ item.pid }} </td>
+          <td> {{ item.pname }} </td>
+          <td> {{ item.ptype }} </td>
+          <td> {{ item.price | currency:'INR' }} </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td class="text-primary fs-5 text-uppercase">Total:</td>
+          <td class="text-dark fs-5"> {{ getTotal() | currency:'INR' }} </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="text-center">
+    <button (click)="back()" type="button" class="btn btn-secondary btn-sm mr-5"><a class="text-white">Continue Shopping</a></button>
+    <button (click)="clearItem()" (click)="reloadComponent()" type="button" class="btn btn-danger btn-sm mr-5"><a class="text-white">Clear  Cart</a></button>
+    <!-- <button (click)="saveCart()" type="button" class="btn btn-success btn-sm mr-5"><a class="text-white">Place Order</a></button> -->
+  </div>
+</div>
+<br>
+<div class="makeinline">
+  
+  <!-- <h2 style="text-align: center;">PAYMENT MADE SEEMLESS</h2> -->
+  
+  <div class="paylogo text-center">
+      <img style="width: 95px;height: 50px;" class="mZ79e pe-lazy" alt="Google Pay" src="https://assets.pharmeasy.in/web-assets/dist/af0c6812.svg" loading="lazy" importance="low">
+  
+      <img style="width: 95px;height: 50px;" class="mZ79e pe-lazy" alt="Paytm" src="https://assets.pharmeasy.in/web-assets/dist/0e010044.svg" loading="lazy" importance="low">
+  
+      <img class="mZ79e pe-lazy" alt="Amazon Pay" src="https://assets.pharmeasy.in/web-assets/dist/1066bb1f.svg" loading="lazy" importance="low">
+  
+      <img class="mZ79e pe-lazy" alt="PhonePe" src="https://assets.pharmeasy.in/web-assets/dist/3a1a533d.svg" loading="lazy" importance="low">
+  
+      <img class="mZ79e pe-lazy" alt="Mobikwik" src="https://assets.pharmeasy.in/web-assets/dist/fbea1701.svg" loading="lazy" importance="low">
+      
+      <img class="mZ79e pe-lazy" alt="Airtel Money" src="https://assets.pharmeasy.in/web-assets/dist/4733a49d.svg" loading="lazy" importance="low">
+  
+      <img class="mZ79e pe-lazy" alt="Ola Money" src="https://assets.pharmeasy.in/web-assets/dist/b278e536.svg" loading="lazy" importance="low">
+  
+      <img style="width: 80px;height: 50px;"  class="mZ79e pe-lazy" alt="Maestro" src="https://assets.pharmeasy.in/web-assets/dist/0aca2077.svg" loading="lazy" importance="low">
+  
+      <img style="width: 80px;height: 50px;"  class="mZ79e pe-lazy" alt="Mastercard" src="https://assets.pharmeasy.in/web-assets/dist/44a51ca5.svg" loading="lazy" importance="low">
+  
+      <img style="width: 95px;height: 50px;" class="mZ79e pe-lazy" alt="Visa" src="https://assets.pharmeasy.in/web-assets/dist/d058b00d.svg" loading="lazy" importance="low">
+  
+      <img style="width: 100px;height: 50px;" class="mZ79e pe-lazy" alt="Rupay" src="https://assets.pharmeasy.in/web-assets/dist/e9445364.svg" loading="lazy" importance="low">
+  
+      <img class="mZ79e pe-lazy" alt="Diners" src="https://assets.pharmeasy.in/web-assets/dist/6e09c713.svg" loading="lazy" importance="low">
+  </div>
+  
+  <br>
+  <div class="text-center">
+    <!-- <form action="/action_page.php">
+      <label for="quantity">Total</label>
+      <div class="cart-item" *ngFor="let item of items">
+        <input type="number" name="pay.amt" (ngModelChange)="getTotal()" [(ngModel)]="pay.amt">
+      </div>
+    </form>
+    <br> -->
+  <button (click)="savePay()" (click)="order()" class="btn btn-success"  style="margin-left:20px ;">Confirm Payment</button>
+</div>
+<br>
+  </div>
